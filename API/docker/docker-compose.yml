@@ -1,0 +1,26 @@
+# docker/docker-compose.yml
+
+version: '3.7'
+
+services:
+  mongo:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: python backend/main.py
+    volumes:
+      - .:/app
+    ports:
+      - "80:80"
+    depends_on:
+      - mongo
+
+volumes:
+  mongodata:

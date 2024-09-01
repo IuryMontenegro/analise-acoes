@@ -1,0 +1,7 @@
+yfinance
+pandas
+pymongo
+APScheduler
+fastapi
+fastapi-cors
+scikit-learn
